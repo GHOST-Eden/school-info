@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8' />
+		<meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" />
+		<style>
+			@font-face {
+				font-family: 'Dovemayo_gothic';
+				src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.1/Dovemayo_gothic.woff2') format('woff2');
+				font-weight: normal;
+				font-style: normal;
+			}
+			
+			/* 전체를 감싸는 컨테이너 스타일 */
+			.container {
+				margin: 0 auto;
+				max-width: 600px; /* 컨테이너 최대 너비 */
+				padding: 20px;
+				border-radius: 5px;
+				background-color: #d9d7d7;
+			}
+			
+			/* 로고 이미지 스타일 */
+			.logo {
+				width: 250px;
+				height: 53.125px;
+				margin-bottom: 15px;
+			}
+			
+			/* 검색 폼 스타일 */
+			.search {
+				position: relative;
+			}
+			
+			/* 검색어 입력란 스타일 */
+			#search-input {
+				width: 80%; /* 검색어 입력란 너비 */
+				padding: 8px;
+				border: none;
+				border-bottom: 2px solid #ccc;
+				font-size: 16px;
+				outline: none;
+			}
+			
+			/* 검색 버튼 스타일 */
+			#search-btn {
+				width: 20px;
+				height: 20px;
+				position: absolute;
+				top: 10px;
+				right: 10px;
+			}
+			
+			/* 검색어 입력란, 검색 버튼을 감싸는 div 스타일 */
+			.selectTable {
+				margin-top: 10px;
+			}
+			
+			/* 검색어 입력한 결과를 나타내는 div 스타일 */
+			#output {
+				margin-top: 10px;
+				font-family: 'Dovemayo_gothic', sans-serif;
+			}
+			
+			/* 스크롤 가능한 표를 나타내는 div 스타일 */
+			#tables {
+				margin-top: 10px;
+				font-family: 'Dovemayo_gothic', sans-serif;
+			}
+			
+			table.type03 {
+				border-collapse: collapse;
+				text-align: left;
+				line-height: 1.5;
+				border-top: 1px solid #ccc;
+				border-left: 3px solid #909090;
+				margin: 15px 10px;
+				margin-left:auto; 
+				margin-right:auto;
+				font-size: 15px;
+			}
+			
+			table.type03 th {
+				width: 147px;
+				padding: 10px;
+				font-weight: bold;
+				vertical-align: top;
+				color: #7B7B7B;
+				border-right: 1px solid #ccc;
+				border-bottom: 1px solid #ccc;
+			}
+			
+			table.type03 td {
+				width: 349px;
+				padding: 10px;
+				vertical-align: top;
+				border-right: 1px solid #ccc;
+				border-bottom: 1px solid #ccc;
+			}
+			
+			/* 셀렉트 박스 스타일 */
+			select {
+				width: 100%;
+				padding: 8px;
+				font-size: 16px;
+				border: none;
+				border-radius: 5px;
+				background-color: #f2f2f2;
+				margin-top: 5px;
+			}
+			
+			/* 셀렉트 박스 선택지 스타일 */
+			option {
+				font-size: 16px;
+			}
+			
+			/* 마우스 커서 위에 있을 때의 스타일 */
+			option:hover {
+				background-color: #e5e5e5;
+			}
+			
+			.check-BOX {
+				font-family: 'Dovemayo_gothic', sans-serif;
+				display: flex;
+				justify-content: center;
+			}
+			
+			.check-BOX input[type="checkbox"] {
+				transform: scale(1.5);
+			}
+			
+			input[type="checkbox"] {
+				display: inline-block;
+				vertical-align: middle;
+			}
+			
+			.check-BOX label {
+				font-size: 1rem;
+				margin-top: 0.3rem;
+			}
+			
+		</style>
+		
+		<!-- 로고 이미지 -->
+		<a href="javascript:window.location.reload(true);">
+			<img class="logo" src="https://i.ibb.co/WvWjr30/png-20230421-132446-0000-removebg.png" alt="png-20230421-132446-0000-removebg" border="0"></a>
+		</a>
+        <script src="../module/search.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="search">
+                <input type="text" placeholder="학교명 입력" id="search-input">
+                <img src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png" id="search-btn">
+                <div class="selectTable">
+                    <select id="school-type">
+                        <option disabled selected>Select school type</option>
+                        <option value="KINDERGARTEN">병설유치원</option>
+                        <option value="ELEMENTARY">초등학교</option>
+                        <option value="MIDDLE">중학교</option>
+                        <option value="HIGH">고등학교</option>
+                    </select>
+                    <select id="location">
+                        <option disabled selected>Select region</option>
+                        <option value="SEOUL">서울</option>
+                        <option value="INCHEON">인천</option>
+                        <option value="BUSAN">부산</option>
+                        <option value="GWANGJU">광주</option>
+                        <option value="DAEJEON">대전</option>
+                        <option value="DEAGU">대구</option>
+                        <option value="SEJONG">세종</option>
+                        <option value="ULSAN">울산</option>
+                        <option value="GYEONGGI">경기</option>
+                        <option value="KANGWON">강원</option>
+                        <option value="CHUNGBUK">충북</option>
+                        <option value="CHUNGNAM">충남</option>
+                        <option value="GYEONGBUK">경북</option>
+                        <option value="GYEONGNAM">경남</option>
+                        <option value="JEONBUK">전북</option>
+                        <option value="JEONNAM">전남</option>
+                        <option value="JEJU">제주</option>
+                    </select>
+                    <br>
+                </div>
+                <div class="check-BOX">
+                	<label><input type="checkbox" name="automatic"> 학교명 자동완성 사용</label>
+                </div>
+                <div id="output"></div>
+                <div id="tables" style="overflow:scroll; width:100%; height:600px; margin-top:5px; border: 1px solid #ccc; border-radius:5px; background-color: #ffffff;"></div>
+            </div>
+        </div>
+    </body>
+</html>
+
+
