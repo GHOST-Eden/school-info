@@ -108,7 +108,7 @@ function search() {
 	}
 		
 	if (schoolName.length <= 1) {
-		alert("한글자 이상 입력해 주세요");
+		alert("두글자 이상 입력해 주세요");
 		return;
 	}
 		
